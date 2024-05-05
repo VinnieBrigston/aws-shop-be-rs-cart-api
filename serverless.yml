@@ -1,0 +1,22 @@
+service: rs-checkout-api
+frameworkVersion: '3'
+variablesResolutionMode: 20210219
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: eu-west-1
+  profile: awsLearning
+  httpApi:
+    cors: true
+
+plugins:
+  - serverless-offline
+
+functions:
+  cartService:
+    handler: handlers/initDataBase.initDatabaseHandler
+    events:
+      - httpApi:
+          path: /cart
+          method: get
