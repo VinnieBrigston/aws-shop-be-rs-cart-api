@@ -1,21 +1,19 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { CartItem } from './cart-item.entity';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity()
 export class Cart {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @OneToMany(
-    () => CartItem,
-    cartItem => cartItem.cart,
-    { cascade: true },
-  )
-  items: CartItem[];
+  @Column({ nullable: false })
+  user_id: string;
 
-  @Column({ default: 'ACTIVE' })
+  @Column({ nullable: false })
+  created_ad: Date;
+
+  @Column({ nullable: false })
+  updated_at: Date;
+
+  @Column({ default: 'OPEN' })
   status: string;
-
-  @Column('decimal', { precision: 10, scale: 2, default: 0 })
-  total: number;
 }

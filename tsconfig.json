@@ -10,6 +10,17 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
-    "incremental": true
-  }
+    "incremental": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "lib": ["ES2020"]
+  },
+  "include": ["src/**/*.ts", "serverless.ts"],
+  "exclude": [
+    "node_modules/**/*",
+    ".serverless/**/*",
+    ".webpack/**/*",
+    "_warmup/**/*",
+    ".vscode/**/*"
+  ]
 }
